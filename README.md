@@ -55,7 +55,7 @@
     
    Dirección IP del servidor + : + directorio exportado en el servidor. Para ver los directorios exportados por un servidor:
 
-        ``` $ showmount -e nfsservername```
+   ``` $ showmount -e nfsservername```
 
    Punto de montaje local. El directorio deberá estar creado (y vacío) y con los permisos adecuados.
 
