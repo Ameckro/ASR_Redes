@@ -68,11 +68,11 @@
 
    Configuración en /etc/fstab:
 
-    ```192.168.248.111:/home-shared /home/remote-projects nfs  timeo=15,intr```
+   ```192.168.248.111:/home-shared /home/remote-projects nfs  timeo=15,intr```
 
    Montar directamente:
 
-    ```$ mount -t nfs 192.168.248.111:/home-shared /home/remote-projects -o timeo=15,intr```
+   ```$ mount -t nfs 192.168.248.111:/home-shared /home/remote-projects -o timeo=15,intr```
 
 ### Seguridad
 
