@@ -1,7 +1,7 @@
 # ASR_Redes
 
 ## 7.1.1. Servicios de almacenamiento en red: NFS
-[https://github.com/Ameckro/ASR_Redes/blob/master/nfs.png]
+[https://raw.githubusercontent.com/Ameckro/ASR_Redes/873dafe62c07e19bd259827762b154ee21832c6c/nfs.png]
 
 
 ### Introducción
