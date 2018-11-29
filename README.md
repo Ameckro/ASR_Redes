@@ -114,24 +114,22 @@ NIS (Network Information Service) permite compartir información de control entr
    Estructura básica: nombre de dominio y broadcast
        También es posible restringir el acceso
    Configuración
-       Servidor (ypserv): /etc/ypserv.conf
+       Servidor (ypserv): ```/etc/ypserv.conf```
        Cliente (ypbind):
-           Configuración cliente: /etc/yp.conf
-           Configuración respecto a otros servicios: /etc/nsswitch.conf
-   Comandos básicos: ypserv, ypbind e ypcat.
+           Configuración cliente: ```/etc/yp.conf```
+           Configuración respecto a otros servicios: ```/etc/nsswitch.conf``` (orden de busqueda de los usuarios)
+   Comandos básicos: ```ypserv```, ```ypbind``` e ```ypcat```.
 
 Puntos a destacar:
 
-    Información que se distribuye: usuarios, grupos, hosts, servicios, .... Denominados mapas. Se obtienen a partir de los ficheros originales, convirtiéndolos a un formato de base de datos específico de la aplicación.
+  - Información que se distribuye: usuarios, grupos, hosts, servicios, .... Denominados mapas. Se obtienen a partir de los ficheros originales, convirtiéndolos a un formato de base de datos específico de la aplicación.
 
-    El servidor y los clientes se agrupan en un concepto denominado dominio[1]. Un servidor da servicio a los clientes de su dominio.
-    [1]	
+  - El servidor y los clientes se agrupan en un concepto denominado dominio[1]. Un servidor da servicio a los clientes de su dominio.
+    ```[1] Dicho dominio puede coincidir con el definido para el servicio DNS, pero conceptualmente son distintos.```
 
-    Dicho dominio puede coincidir con el definido para el servicio DNS, pero conceptualmente son distintos.
+  - Servidor: configurado para distribuir los mapas dentro de su dominio. Se puede configurar qué mapas se distribuyen, además de a qué clientes. Como medida de seguridad, se puede configurar servidores adicionales (que se denominarán esclavos, para apoyar al principal o maestro)
 
-    Servidor: configurado para distribuir los mapas dentro de su dominio. Se puede configurar qué mapas se distribuyen, además de a qué clientes. Como medida de seguridad, se puede configurar servidores adicionales (que se denominarán esclavos, para apoyar al principal o maestro)
-
-    Cliente: el cliente solicita los mapas del dominio al que pertenece. En el propio cliente se decide cómo se combina la información obtenida con la configuración del sistema local (ejemplo: usuarios obtenidos del dominio NIS con los usuarios locales).
+  - Cliente: el cliente solicita los mapas del dominio al que pertenece. En el propio cliente se decide cómo se combina la información obtenida con la configuración del sistema local (ejemplo: usuarios obtenidos del dominio NIS con los usuarios locales).
 
 Existe una versión más reciente denominada NIS+ con mejoras significativas (añade mayor seguridad y estructura jerárquica), sin embargo, no se encuentra muy extendida.
 Servidor
@@ -141,15 +139,15 @@ Software necesario: paquetes nis y rpcbind (portmap)
 Es recomendable tener un maestro y varios esclavos (al menos uno). Si el maestro falla, uno de los esclavos tomará el papel de maestro temporal.
 Pasos a seguir para configurar el servidor maestro
 
-    [Comprobar que el servicio rpcbind está en marcha] Instalar el paquete nis. Al instalar solicitará un dominio (paso 2).
+   [Comprobar que el servicio rpcbind está en marcha] Instalar el paquete nis. Al instalar solicitará un dominio (paso 2).
 
-    Establecer el dominio[2]. Opciones:
+   Establecer el dominio[2]. Opciones:
 
-        Instanciarlo al instalar el paquete nis (o dpkg-reconfigure nis)
+      Instanciarlo al instalar el paquete nis (o dpkg-reconfigure nis)
+ 
+      Modificando el fichero ```/etc/defaultdomain``` (puede ser necesario reiniciar el sistema):
 
-        Modificando el fichero /etc/defaultdomain (puede ser necesario reiniciar el sistema):
-
-        $ echo "lab_domain" > /etc/defaultdomain
+       ```$ echo "lab_domain" > /etc/defaultdomain```
 
         Mediante el comando domainname (o nisdomainname o ypdomainname) (se perderán los cambios al reiniciar el sistema o el servicio nis).
     [2]	
