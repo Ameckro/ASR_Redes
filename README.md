@@ -36,7 +36,8 @@
     /home-global 192.168.248.0/24(sync)  # '/24' = 255.255.255.0
     /media/dvd  *(ro)                    # todos los nodos en modo solo-lectura. Exporta un CD rom
 ```
-   ``` [3]  Para poder compartir directorios (en el ejemplo /home-global y /media/dvd), éstos deberán ser accesibles en el sistema de ficheros local. Es decir, (1) crearlos en caso de que no existan previamente y (2) con permisos de acceso.
+
+``` [3]  Para poder compartir directorios (en el ejemplo /home-global y /media/dvd), éstos deberán ser accesibles en el sistema de ficheros local. Es decir, (1) crearlos en caso de que no existan previamente y (2) con permisos de acceso.
 ```
    
    Exportar directorios según la configuración: comando exportfs:
